@@ -1,21 +1,24 @@
-﻿using System.Data.SqlClient;
-using System.Reflection.Metadata.Ecma335;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CLDB
 {
-    public class DbAccess : IDbAccess
+    public class DbHelper
     {
-        private SqlConnection dbConn;
-        public DbAccess()
+        protected SqlConnection dbConn;
+
+        public DbHelper()
         {
             dbConn = new SqlConnection("Data Source=PCVDATAWRK003\\MSSQLSERVER01;Initial Catalog=Diviso_addresses;Integrated Security=True;Trust Server Certificate=True");
         }
 
-        public async Task<bool> AddAdress(string address)
+        public async Task<bool> ExecuteInsertQuery(string sql)
         {
-            string command = "EXEC SP";
-
-            SqlCommand sqlCommand = new SqlCommand(command, dbConn);
+            SqlCommand sqlCommand = new SqlCommand(sql, dbConn);
 
             try
             {
@@ -34,16 +37,6 @@ namespace CLDB
 
                 return false;
             }
-        }
-
-        public Task<bool> DeleteAdresses(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<string>> GetAllAddresses()
-        {
-            throw new NotImplementedException();
         }
     }
 }

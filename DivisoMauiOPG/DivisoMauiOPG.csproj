@@ -57,6 +57,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\CLDB\CLDB.csproj" />
+	  <ProjectReference Include="..\Models\Models.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Views\AdressesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

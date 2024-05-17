@@ -5,7 +5,9 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DivisoMauiOPG", "DivisoMauiOPG\DivisoMauiOPG.csproj", "{8F3BF759-D5E6-4DD9-A58C-9B6FBC5F2C1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLDB", "CLDB\CLDB.csproj", "{B99CDA29-5060-40F6-943C-47F333E68585}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLDB", "CLDB\CLDB.csproj", "{B99CDA29-5060-40F6-943C-47F333E68585}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{14AE023E-A7C1-4D8F-BCB8-A06322645B60}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{B99CDA29-5060-40F6-943C-47F333E68585}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B99CDA29-5060-40F6-943C-47F333E68585}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B99CDA29-5060-40F6-943C-47F333E68585}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14AE023E-A7C1-4D8F-BCB8-A06322645B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14AE023E-A7C1-4D8F-BCB8-A06322645B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14AE023E-A7C1-4D8F-BCB8-A06322645B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14AE023E-A7C1-4D8F-BCB8-A06322645B60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
