@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DivisoMauiOPG.Views.AdressesPage"
+             Title="AdressesPage">
+    <Grid RowSpacing="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <VerticalStackLayout Grid.ColumnSpan="3" Spacing="20">
+            <Image
+                Source="divisosidelogo.png"
+                HeightRequest="60"
+                HorizontalOptions="Center" 
+                />
+
+            <Entry x:Name="search"
+               Placeholder="Søg her"
+               HorizontalTextAlignment="Center"
+               />
+        </VerticalStackLayout>
+        
+        <Label Text="Søgeresultat"
+               Grid.ColumnSpan="3"
+               HorizontalOptions="Center"
+               Grid.Row="1"
+               FontAttributes="Bold"
+               />
+        <ScrollView Orientation="Vertical" Grid.ColumnSpan="3" Grid.Row="2">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <VerticalStackLayout HorizontalOptions="End" Grid.Column="0" Spacing="10">
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                    <Label Text="Adresse"/>
+                </VerticalStackLayout>
+            </Grid>
+
+        </ScrollView>
+
+        <HorizontalStackLayout HorizontalOptions="Center" Grid.ColumnSpan="3" Grid.Row="3" HeightRequest="50" VerticalOptions="End" Spacing="-1">
+            <Button Text="Søgning" CornerRadius="0" WidthRequest="125" />
+            <Button Text="Gemt Liste" CornerRadius="0" WidthRequest="125" BackgroundColor="White" TextColor="#002b4e" BorderColor="#002b4e" />
+        </HorizontalStackLayout>
+    </Grid>
+
+
+</ContentPage>
