@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.Reflection.Metadata.Ecma335;
 
 namespace CLDB
 {
@@ -7,12 +8,32 @@ namespace CLDB
         private SqlConnection dbConn;
         public DbAccess()
         {
-                
+            dbConn = new SqlConnection("Data Source=PCVDATAWRK003\\MSSQLSERVER01;Initial Catalog=Diviso_addresses;Integrated Security=True;Trust Server Certificate=True");
         }
 
-        public Task<bool> AddAdress(string address)
+        public async Task<bool> AddAdress(string address)
         {
-            throw new NotImplementedException();
+            string command = "EXEC SP";
+
+            SqlCommand sqlCommand = new SqlCommand(command, dbConn);
+
+            try
+            {
+                await dbConn.OpenAsync();
+
+                //Check
+                var result = await sqlCommand.ExecuteNonQueryAsync();
+
+                await dbConn.CloseAsync();
+
+                return result > 0;
+            }
+            catch
+            {
+                await dbConn.CloseAsync();
+
+                return false;
+            }
         }
 
         public Task<bool> DeleteAdresses(int id)
