@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 
 namespace CLDB
 {
@@ -13,18 +8,42 @@ namespace CLDB
 
         public DbHelper()
         {
-            dbConn = new SqlConnection("Data Source=PCVDATAWRK003\\MSSQLSERVER01;Initial Catalog=Diviso_addresses;Integrated Security=True;Trust Server Certificate=True");
+            //dbConn = new SqlConnection("Data Source=PCVDATAWRK003\\MSSQLSERVER01;Initial Catalog=Diviso_addresses;Integrated Security=True;Trust Server Certificate=True");
+            //home connection
+            dbConn = new SqlConnection("Data Source=DESKTOP-3CIKLKO\\SQLEXPRESS;Initial Catalog=Diviso_addresses;Integrated Security=True;Trust Server Certificate=True");
         }
 
-        public async Task<bool> ExecuteInsertQuery(string sql)
+        protected async Task<SqlDataReader> ExecuteSelectQuery(string sql)
+        {
+            SqlCommand command = new SqlCommand(sql, dbConn);
+
+            try
+            {
+                await dbConn.OpenAsync();
+            }
+            catch 
+            {
+                return null;
+            }
+
+            return await command.ExecuteReaderAsync();
+        }
+
+        protected async Task<bool> ExecuteInsertQuery(string sql)
         {
             SqlCommand sqlCommand = new SqlCommand(sql, dbConn);
 
             try
             {
                 await dbConn.OpenAsync();
+            }
+            catch
+            {
+                return false;
+            }
 
-                //Check
+            try
+            {
                 var result = await sqlCommand.ExecuteNonQueryAsync();
 
                 await dbConn.CloseAsync();
@@ -37,6 +56,16 @@ namespace CLDB
 
                 return false;
             }
+        }
+
+        protected async Task<bool> ExecuteDeleteQuery(string sql)
+        {
+            return await ExecuteInsertQuery(sql);
+        }
+
+        protected async Task<bool> ExecuteUpdateQuery(string sql)
+        {
+            return await ExecuteInsertQuery(sql);
         }
     }
 }

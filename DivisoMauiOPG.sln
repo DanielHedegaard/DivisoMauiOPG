@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DivisoMauiOPG", "DivisoMaui
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLDB", "CLDB\CLDB.csproj", "{B99CDA29-5060-40F6-943C-47F333E68585}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{14AE023E-A7C1-4D8F-BCB8-A06322645B60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{14AE023E-A7C1-4D8F-BCB8-A06322645B60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLBL", "CLBL\CLBL.csproj", "{6172A48B-8BF0-4F80-BA60-4CF8542F5425}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{14AE023E-A7C1-4D8F-BCB8-A06322645B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14AE023E-A7C1-4D8F-BCB8-A06322645B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14AE023E-A7C1-4D8F-BCB8-A06322645B60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6172A48B-8BF0-4F80-BA60-4CF8542F5425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6172A48B-8BF0-4F80-BA60-4CF8542F5425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6172A48B-8BF0-4F80-BA60-4CF8542F5425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6172A48B-8BF0-4F80-BA60-4CF8542F5425}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

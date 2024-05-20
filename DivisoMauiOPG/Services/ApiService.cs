@@ -1,4 +1,5 @@
 ﻿using CLDB.Interfaces;
+using Models;
 using System.Net.Http.Json;
 
 namespace CLDB.Services
@@ -10,17 +11,31 @@ namespace CLDB.Services
         
         public ApiService()
         {
-            _apiRoot = "http://wwww.localhost:1234";
+            _apiRoot = "https://api.dataforsyningen.dk";
             _httpClient = new HttpClient();
         }
 
-        public async Task<List<string>> GetAdresses(string searchKeyWord)
+        private async Task<bool> IsApiAlive()
         {
-            var uri = $"{_apiRoot}/address?keyword={searchKeyWord}";
+            var uri = $"{_apiRoot}";
+
+            return true;
+        }
+
+        public async Task<List<Address>> GetAdresses(string searchKeyWord)
+        {
+            if (!await IsApiAlive())
+            {
+                return null;
+            }
+
+            //before check search string uri= ?postnr=1234
+
+            var uri = $"{_apiRoot}/adgangsadresser/autocomplete?q={searchKeyWord}";
 
             try
             {
-                var result = await _httpClient.GetFromJsonAsync<List<string>>(uri);
+                var result = await _httpClient.GetFromJsonAsync<List<Address>>(uri);
 
                 return result;
             }
@@ -29,37 +44,5 @@ namespace CLDB.Services
                 return null;
             }
         }
-
-        //public async Task<bool> AddAdress(string address)
-        //{
-        //    var uri = $"{_apiRoot}/address";
-
-        //    try
-        //    {
-        //        var result = await _httpClient.PostAsJsonAsync(uri, address);
-
-        //        return result.IsSuccessStatusCode;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
-
-        //public async Task<bool> DeleteAdresses(int id)
-        //{
-        //    var uri = $"{_apiRoot}/address?={id}";
-
-        //    try
-        //    {
-        //        var result = await _httpClient.DeleteAsync(uri);
-
-        //        return result.IsSuccessStatusCode;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
     }
 }

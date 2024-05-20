@@ -25,8 +25,9 @@
             <Entry x:Name="search"
                Placeholder="Søg her"
                HorizontalTextAlignment="Center"
-               />
-        </VerticalStackLayout>
+               TextChanged="search_TextChanged"/>
+
+        </VerticalStackLayout>  
         
         <Label Text="Søgeresultat"
                Grid.ColumnSpan="3"
@@ -43,6 +44,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <VerticalStackLayout HorizontalOptions="End" Grid.Column="0" Spacing="10">
+                    
                     <Label Text="Adresse"/>
                     <Label Text="Adresse"/>
                     <Label Text="Adresse"/>
