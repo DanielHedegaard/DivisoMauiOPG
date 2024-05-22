@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="DivisoMauiOPG.Views.AdressesPage"
-             Title="AdressesPage">
+             x:Name="AddressPage"
+             Title="AddressesPage">
     <Grid RowSpacing="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -25,17 +27,25 @@
             <Entry x:Name="search"
                Placeholder="Søg her"
                HorizontalTextAlignment="Center"
-               TextChanged="search_TextChanged"/>
+                >
+                <Entry.Behaviors>
+                    <toolkit:UserStoppedTypingBehavior 
+                        Command="{Binding Source={x:Reference AddressPage}, Path=SearchCommand}"                         
+                        StoppedTypingTimeThreshold="1000"
+                        MinimumLengthThreshold="3"
+                        ShouldDismissKeyboardAutomatically="false" />
+                </Entry.Behaviors>
+            </Entry>
+            <Button x:Name="searchBtn" Text="tempserach" Clicked="searchBtn_Clicked" />
+        </VerticalStackLayout>
 
-        </VerticalStackLayout>  
-        
         <Label Text="Søgeresultat"
                Grid.ColumnSpan="3"
                HorizontalOptions="Center"
                Grid.Row="1"
                FontAttributes="Bold"
                />
-        <ScrollView Orientation="Vertical" Grid.ColumnSpan="3" Grid.Row="2">
+        <ScrollView Orientation="Vertical" Grid.ColumnSpan="3" HorizontalOptions="Center" Grid.Row="2">
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -43,29 +53,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <VerticalStackLayout HorizontalOptions="End" Grid.Column="0" Spacing="10">
-                    
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
-                    <Label Text="Adresse"/>
+                <VerticalStackLayout Grid.Column="1" Spacing="10" x:Name="AddressResults">
                 </VerticalStackLayout>
             </Grid>
 
@@ -73,7 +61,8 @@
 
         <HorizontalStackLayout HorizontalOptions="Center" Grid.ColumnSpan="3" Grid.Row="3" HeightRequest="50" VerticalOptions="End" Spacing="-1">
             <Button Text="Søgning" CornerRadius="0" WidthRequest="125" />
-            <Button Text="Gemt Liste" CornerRadius="0" WidthRequest="125" BackgroundColor="White" TextColor="#002b4e" BorderColor="#002b4e" />
+            <Button x:Name="saved" Text="Gemt Liste" CornerRadius="0" WidthRequest="125" 
+                    BackgroundColor="White" TextColor="#002b4e" BorderColor="#002b4e" Clicked="saved_Clicked" />
         </HorizontalStackLayout>
     </Grid>
 

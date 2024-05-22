@@ -14,5 +14,4 @@ namespace DivisoMauiOPG
             Navigation.PushAsync(new AdressesPage());
         }
     }
-
 }

@@ -1,5 +1,6 @@
 ﻿using CLDB.DB;
 using Models;
+using WebModels;
 
 namespace CLBL
 {
@@ -12,9 +13,27 @@ namespace CLBL
             dbConn = new DbAccess();
         }
 
-        public async Task<List<Address>> GetAllAddresses()
+        public async Task<List<DawaAddress>> GetAllAddresses()
         {
-            return await dbConn.GetAllAddresses();
+            List<DawaAddress> returnList = new();
+            List<Address> addresses = await dbConn.GetAllAddresses();
+
+            if (addresses == null) { return null; }
+
+            foreach (Address address in addresses)
+            {
+                if (address.Address_Name != null)
+                {
+                    DawaAddress dawaAddress = new DawaAddress()
+                    {
+                        tekst = address.Address_Name + " " + address.Zip_Code + " " + address.City,
+                    };
+
+                    returnList.Add(dawaAddress);
+                }
+            }
+
+            return null;
         }
 
         //convert address string = address object

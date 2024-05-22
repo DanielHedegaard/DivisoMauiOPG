@@ -14,34 +14,38 @@ namespace CLDB.DB
 
             SqlDataReader result = await ExecuteSelectQuery(command);
 
-            try
+            if (result != null)
             {
-                while (await result.ReadAsync())
+                try
                 {
-                    Address address = new Address()
+                    while (await result.ReadAsync())
                     {
-                        Address_Name = (string)result["Address_Name"],
-                        City = (string)result["City"],
-                        Zip_Code = (int)result["Zip_Code"]
-                    };
-                    addresses.Add(address);
+                        Address address = new Address()
+                        {
+                            Address_Name = (string)result["Address_Name"],
+                            City = (string)result["City"],
+                            Zip_Code = (int)result["Zip_Code"]
+                        };
+                        addresses.Add(address);
+                    }
+                    await dbConn.CloseAsync();
+
+                    return addresses;
                 }
-                await dbConn.CloseAsync();
+                catch
+                {
+                    await dbConn.CloseAsync();
 
-                return addresses;
+                    return null;
+                }
             }
-            catch
-            {
-                await dbConn.CloseAsync();
-
-                return null;
-            }
+            else return null;
         }
 
         public async Task<bool> AddAdress(string address)
         {
             //get from parameter string
-            Address addres = new Address() {  };
+            Address addres = new Address() { };
 
             string command = $"EXEC sp_AddAddress @Address_Name = '{addres.Address_Name}', @Zip_Code = {addres.Zip_Code}, @City = '{addres.City}'";
 

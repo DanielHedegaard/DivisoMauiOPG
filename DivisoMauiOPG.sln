@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLDB", "CLDB\CLDB.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{14AE023E-A7C1-4D8F-BCB8-A06322645B60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLBL", "CLBL\CLBL.csproj", "{6172A48B-8BF0-4F80-BA60-4CF8542F5425}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLBL", "CLBL\CLBL.csproj", "{6172A48B-8BF0-4F80-BA60-4CF8542F5425}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebModels", "WebModels\WebModels.csproj", "{329A4FF0-22AA-4653-8533-19576A1C6034}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{6172A48B-8BF0-4F80-BA60-4CF8542F5425}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6172A48B-8BF0-4F80-BA60-4CF8542F5425}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6172A48B-8BF0-4F80-BA60-4CF8542F5425}.Release|Any CPU.Build.0 = Release|Any CPU
+		{329A4FF0-22AA-4653-8533-19576A1C6034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{329A4FF0-22AA-4653-8533-19576A1C6034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{329A4FF0-22AA-4653-8533-19576A1C6034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{329A4FF0-22AA-4653-8533-19576A1C6034}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

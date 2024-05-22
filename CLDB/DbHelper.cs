@@ -8,9 +8,10 @@ namespace CLDB
 
         public DbHelper()
         {
-            //dbConn = new SqlConnection("Data Source=PCVDATAWRK003\\MSSQLSERVER01;Initial Catalog=Diviso_addresses;Integrated Security=True;Trust Server Certificate=True");
+            //work connection
+            dbConn = new SqlConnection("Data Source=PCVDATAWRK003\\MSSQLSERVER01;Initial Catalog=Diviso_addresses;Integrated Security=True;Encrypt=True;");
             //home connection
-            dbConn = new SqlConnection("Data Source=DESKTOP-3CIKLKO\\SQLEXPRESS;Initial Catalog=Diviso_addresses;Integrated Security=True;Trust Server Certificate=True");
+            //dbConn = new SqlConnection("Data Source=DESKTOP-3CIKLKO\\SQLEXPRESS;Initial Catalog=Diviso_addresses;Integrated Security=True;Trust Server Certificate=True");
         }
 
         protected async Task<SqlDataReader> ExecuteSelectQuery(string sql)

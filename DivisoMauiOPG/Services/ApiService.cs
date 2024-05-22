@@ -1,6 +1,6 @@
 ﻿using CLDB.Interfaces;
-using Models;
 using System.Net.Http.Json;
+using WebModels;
 
 namespace CLDB.Services
 {
@@ -15,16 +15,16 @@ namespace CLDB.Services
             _httpClient = new HttpClient();
         }
 
-        private async Task<bool> IsApiAlive()
+        private bool IsApiAlive()
         {
             var uri = $"{_apiRoot}";
 
             return true;
         }
 
-        public async Task<List<Address>> GetAdresses(string searchKeyWord)
+        public async Task<List<DawaAddress>> GetAdresses(string searchKeyWord)
         {
-            if (!await IsApiAlive())
+            if (!IsApiAlive())
             {
                 return null;
             }
@@ -35,7 +35,7 @@ namespace CLDB.Services
 
             try
             {
-                var result = await _httpClient.GetFromJsonAsync<List<Address>>(uri);
+                var result = await _httpClient.GetFromJsonAsync<List<DawaAddress>>(uri);
 
                 return result;
             }

@@ -1,9 +1,9 @@
-﻿using Models;
+﻿using WebModels;
 
 namespace CLDB.Interfaces
 {
     public interface IApiService
     {
-        Task<List<Address>> GetAdresses(string searchKeyWord);
+        Task<List<DawaAddress>> GetAdresses(string searchKeyWord);
     }
 }
