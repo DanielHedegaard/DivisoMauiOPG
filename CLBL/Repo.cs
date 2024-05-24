@@ -26,24 +26,37 @@ namespace CLBL
                 {
                     DawaAddress dawaAddress = new DawaAddress()
                     {
-                        tekst = address.Address_Name + " " + address.Zip_Code + " " + address.City,
+                        tekst = address.Address_Name + ", " + address.Zip_Code + ", " + address.City,
                     };
 
                     returnList.Add(dawaAddress);
                 }
             }
 
-            return null;
+            return returnList;
         }
 
         //convert address string = address object
-        public async Task<bool> AddAdress(string address)
+        public async Task<bool> AddAdress(DawaAddress dwAddress)
         {
-            if (!string.IsNullOrEmpty(address))
+            if (dwAddress != null)
             {
-                return await dbConn.AddAdress(address);
-            }
+                int postCode = 0;
 
+                try
+                {
+                    postCode = Convert.ToInt32(dwAddress.adgangsadresse.postnr);
+                }
+                catch
+                {
+                    return false;
+                }
+
+                Address paramAddress = new() { Address_Name = dwAddress.adgangsadresse.vejnavn + " " + dwAddress.adgangsadresse.husnr,
+                    City = dwAddress.adgangsadresse.postnrnavn, Zip_Code = postCode};
+
+                return await dbConn.AddAdress(paramAddress);
+            }
             return false;
         }
 

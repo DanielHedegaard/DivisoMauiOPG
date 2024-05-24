@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DivisoMauiOPG.Views.Popups.DeletePopup"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+           Size="300, 150">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <VerticalStackLayout >
+            <Label 
+            Text="Vil du slette denne addresse fra din gemte list?"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            Grid.ColumnSpan="1"
+            Padding="10"/>
+            <HorizontalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
+                <Button x:Name="yesBtn" Grid.Column="0" Text="Ja" Clicked="yesBtn_Clicked"/>
+                <Button x:Name="noBtn" Grid.Column="1" Text="Nej" Clicked="noBtn_Clicked"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
+</mct:Popup>

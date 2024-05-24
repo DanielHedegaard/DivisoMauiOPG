@@ -7,7 +7,7 @@ namespace CLDB.DB
     {
 
         public async Task<List<Address>> GetAllAddresses()
-        {
+         {
             string command = "SELECT * FROM Address";
 
             List<Address> addresses = new();
@@ -42,12 +42,9 @@ namespace CLDB.DB
             else return null;
         }
 
-        public async Task<bool> AddAdress(string address)
+        public async Task<bool> AddAdress(Address address)
         {
-            //get from parameter string
-            Address addres = new Address() { };
-
-            string command = $"EXEC sp_AddAddress @Address_Name = '{addres.Address_Name}', @Zip_Code = {addres.Zip_Code}, @City = '{addres.City}'";
+            string command = $"EXEC sp_AddAddress @Address_Name = '{address.Address_Name}', @Zip_Code = {address.Zip_Code}, @City = '{address.City}'";
 
             return await ExecuteInsertQuery(command);
         }

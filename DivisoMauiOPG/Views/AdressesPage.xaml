@@ -53,16 +53,23 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <VerticalStackLayout Grid.Column="1" Spacing="10" x:Name="AddressResults">
+                <VerticalStackLayout Grid.Column="1" Spacing="100">
+                    <ListView x:Name="AddressListView" ItemsSource="{Binding AddressList}"
+                              ItemSelected="AddressListView_ItemSelected">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding tekst}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </VerticalStackLayout>
             </Grid>
-
         </ScrollView>
 
         <HorizontalStackLayout HorizontalOptions="Center" Grid.ColumnSpan="3" Grid.Row="3" HeightRequest="50" VerticalOptions="End" Spacing="-1">
-            <Button Text="Søgning" CornerRadius="0" WidthRequest="125" />
-            <Button x:Name="saved" Text="Gemt Liste" CornerRadius="0" WidthRequest="125" 
-                    BackgroundColor="White" TextColor="#002b4e" BorderColor="#002b4e" Clicked="saved_Clicked" />
+            <Button x:Name="searchTabBtn" Text="Søgning" CornerRadius="0" WidthRequest="125"  Clicked="searchTabBtn_Clicked"/>
+            <Button x:Name="savedTabBtn" Text="Gemt Liste" CornerRadius="0" WidthRequest="125" 
+                    BackgroundColor="White" TextColor="#002b4e" BorderColor="#002b4e" Clicked="savedTabBtn_Clicked" />
         </HorizontalStackLayout>
     </Grid>
 

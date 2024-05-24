@@ -9,7 +9,7 @@ namespace CLDB
         public DbHelper()
         {
             //work connection
-            dbConn = new SqlConnection("Data Source=PCVDATAWRK003\\MSSQLSERVER01;Initial Catalog=Diviso_addresses;Integrated Security=True;Encrypt=True;");
+            dbConn = new SqlConnection("Data Source=PCVDATAWRK003\\MSSQLSERVER01;Initial Catalog=Diviso_addresses;Integrated Security=True;Encrypt=True; TrustServerCertificate=True");
             //home connection
             //dbConn = new SqlConnection("Data Source=DESKTOP-3CIKLKO\\SQLEXPRESS;Initial Catalog=Diviso_addresses;Integrated Security=True;Trust Server Certificate=True");
         }

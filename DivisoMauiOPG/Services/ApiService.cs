@@ -29,8 +29,6 @@ namespace CLDB.Services
                 return null;
             }
 
-            //before check search string uri= ?postnr=1234
-
             var uri = $"{_apiRoot}/adgangsadresser/autocomplete?q={searchKeyWord}";
 
             try
