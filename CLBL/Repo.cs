@@ -27,6 +27,7 @@ namespace CLBL
                     DawaAddress dawaAddress = new DawaAddress()
                     {
                         tekst = address.Address_Name + ", " + address.Zip_Code + ", " + address.City,
+                        adgangsadresse = new Adgangsadresse() { id = address.id.ToString() },
                     };
 
                     returnList.Add(dawaAddress);
@@ -41,19 +42,9 @@ namespace CLBL
         {
             if (dwAddress != null)
             {
-                int postCode = 0;
-
-                try
-                {
-                    postCode = Convert.ToInt32(dwAddress.adgangsadresse.postnr);
-                }
-                catch
-                {
-                    return false;
-                }
-
                 Address paramAddress = new() { Address_Name = dwAddress.adgangsadresse.vejnavn + " " + dwAddress.adgangsadresse.husnr,
-                    City = dwAddress.adgangsadresse.postnrnavn, Zip_Code = postCode};
+                    City = dwAddress.adgangsadresse.postnrnavn, Zip_Code = dwAddress.adgangsadresse.postnr
+                };
 
                 return await dbConn.AddAdress(paramAddress);
             }

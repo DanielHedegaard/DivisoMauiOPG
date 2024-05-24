@@ -22,9 +22,10 @@ namespace CLDB.DB
                     {
                         Address address = new Address()
                         {
+                            id = (int)result["id"],
                             Address_Name = (string)result["Address_Name"],
                             City = (string)result["City"],
-                            Zip_Code = (int)result["Zip_Code"]
+                            Zip_Code = (string)result["Zip_Code"]
                         };
                         addresses.Add(address);
                     }

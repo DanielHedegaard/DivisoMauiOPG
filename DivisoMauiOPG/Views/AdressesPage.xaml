@@ -4,7 +4,8 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="DivisoMauiOPG.Views.AdressesPage"
              x:Name="AddressPage"
-             Title="AddressesPage">
+             Title="AddressesPage"
+             >
     <Grid RowSpacing="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
