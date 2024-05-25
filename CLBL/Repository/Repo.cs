@@ -2,7 +2,7 @@
 using Models;
 using WebModels;
 
-namespace CLBL
+namespace CLBL.Repository
 {
     public class Repo : IRepo
     {
@@ -11,6 +11,24 @@ namespace CLBL
         public Repo()
         {
             dbConn = new DbAccess();
+        }
+
+        public async Task<bool> Login(string password)
+        {
+            if (!string.IsNullOrEmpty(password)) 
+            {
+                List<User> users = await dbConn.GetUsers();
+
+                foreach (User user in users)
+                {
+                    if (PasswordHash.ValidatePassword(password, user.password))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         public async Task<List<DawaAddress>> GetAllAddresses()
@@ -42,8 +60,11 @@ namespace CLBL
         {
             if (dwAddress != null)
             {
-                Address paramAddress = new() { Address_Name = dwAddress.adgangsadresse.vejnavn + " " + dwAddress.adgangsadresse.husnr,
-                    City = dwAddress.adgangsadresse.postnrnavn, Zip_Code = dwAddress.adgangsadresse.postnr
+                Address paramAddress = new()
+                {
+                    Address_Name = dwAddress.adgangsadresse.vejnavn + " " + dwAddress.adgangsadresse.husnr,
+                    City = dwAddress.adgangsadresse.postnrnavn,
+                    Zip_Code = dwAddress.adgangsadresse.postnr
                 };
 
                 return await dbConn.AddAdress(paramAddress);

@@ -5,6 +5,40 @@ namespace CLDB.DB
 {
     public class DbAccess : DbHelper, IDbAccess
     {
+        public async Task<List<User>> GetUsers()
+        {
+            string command = "SELECT * FROM Users";
+
+            List<User> users = new List<User>();
+
+            SqlDataReader result = await ExecuteSelectQuery(command);
+
+            if (result != null)
+            {
+                try
+                {
+                    while (await result.ReadAsync())
+                    {
+                        User user = new User()
+                        {
+                            id = (int)result["id"],
+                            password = (string)result["Password"]
+                        };
+                        users.Add(user);
+                    }
+                    await dbConn.CloseAsync();
+
+                    return users;
+                }
+                catch 
+                {
+                    await dbConn.CloseAsync();
+
+                    return null;
+                }
+            }
+            else return null;
+        }
 
         public async Task<List<Address>> GetAllAddresses()
          {
